@@ -7,9 +7,15 @@ let lebel3 = document.querySelector("#adress");
 let elLebel = document.querySelector("#content");
 let size = document.getElementsByName("btnradio");
 let list = document.querySelector("#list");
+
 const Arr = [];
 
 let Arryorder = [];
+
+
+// function myfuc()
+
+
 
 elForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -17,7 +23,7 @@ elForm.addEventListener("submit", function (evt) {
   const elInputVal = evt.target[0].value;
   const lebel2 = evt.target[1].value;
   const lebel3 = evt.target[2].value;
-
+   
   let selectedList = list.value;
   let pizzaSize = "";
   for (i = 0; i < size.length; i++) {
@@ -26,6 +32,16 @@ elForm.addEventListener("submit", function (evt) {
     }
   }
   let pizzaSizeInSm = pizzaSize.value;
+  
+  const info = list.value;
+  const elPizza = "";
+  for (let i=0; i<Arr.length;i++){
+    if(Arr[i].checked){
+      elPizza = Arr[i]
+    }
+  }
+  let salades = elPizza.value
+
 
   const Cards = {
     id: Arr[Arr.length - 1]?.id + 1 || 0,
@@ -34,7 +50,7 @@ elForm.addEventListener("submit", function (evt) {
     Adres: lebel3,
     thicknes: selectedList,
     pZ: pizzaSizeInSm,
-    
+    Sl:salades,
     isCompleted: false,
     isSubmit: false,
   };
@@ -61,7 +77,7 @@ function RenderOrder() {
        <div class="newadd">
         <strong> Dough thickeness:${Arr[i].thicknes}</strong>
         <strong>Size:${Arr[i].pZ}</strong>
-        <strong>On pizza:</strong>
+        <strong>On pizza${Arr[i].Sl}:</strong>
         <strong>Add:</strong>
        </div>
     <hr>
